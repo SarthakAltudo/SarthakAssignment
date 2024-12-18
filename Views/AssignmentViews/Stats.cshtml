@@ -1,8 +1,25 @@
-﻿@using Sitecore.Mvc
+﻿
+@using Sitecore.Mvc
 @using Sitecore.Mvc.Presentation
 @using Sitecore.Mvc.Helpers
+@using Sitecore.Data.Fields
+@using Sitecore.Data.Items
+
 @{
-    Layout = null;
+    ViewBag.Title = "CounterArea";
+
+    // Get the current rendering item
+    var renderingItem = RenderingContext.Current.Rendering.Item;
+
+    // Cast the page to a Sitecore item
+    Item myItem = (Item)renderingItem;
+
+    // Reading the Multilist
+    MultilistField cardListItem = myItem.Fields["StatsList"];
+
+    // Getting all the items
+    Item[] cards = cardListItem.GetItems();
+
 }
 
 <section class="counter__area z-index-11 include__bg">
@@ -10,61 +27,28 @@
         <div class="counter__bg-area include__bg pt-65 pb-35"
              style="background: url('/assets/img/counter-bg.jpg')">
             <div class="row">
-                <div class="col-xl-3 col-lg-3 col-md-6 mb-30">
+                
+                @foreach(Item card in cards)
+                {
+                    <div class="col-xl-3 col-lg-3 col-md-6 mb-30">
                     <div class="counter__item text-center">
                         <div class="counter__item-number">
                             <h2 class="counter">
                                 <div class="d-inline-flex">
-                                    <div class="counter-count">30</div>
+                                    <div class="counter-count">
+                                    @Html.Sitecore().Field("Info1",card)
+                                    </div>
                                     <span><span></span></span>
                                 </div>
                             </h2>
-                            <p>
-                                Year experience <br />
-                                in this field
-                            </p>
+                            
+                                @Html.Sitecore().Field("Info1Text",card)
+                            
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 mb-30">
-                    <div class="counter__item text-center">
-                        <div class="counter__item-number">
-                            <h2 class="counter">
-                                <div class="d-inline-flex">
-                                    <div class="counter-count">696</div>
-                                    <span><span></span></span>
-                                </div>
-                            </h2>
-                            <p>Worldwide good <br />clientse</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 mb-30">
-                    <div class="counter__item text-center">
-                        <div class="counter__item-number">
-                            <h2 class="counter">
-                                <div class="d-inline-flex">
-                                    <div class="counter-count">1200</div>
-                                    <span><span></span></span>
-                                </div>
-                            </h2>
-                            <p>Worldwide Captured <br />online base</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 mb-30">
-                    <div class="counter__item text-center">
-                        <div class="counter__item-number">
-                            <h2 class="counter">
-                                <div class="d-inline-flex">
-                                    <div class="counter-count">5</div>
-                                    <span><span></span></span>
-                                </div>
-                            </h2>
-                            <p>Masterclass Team <br />ever made</p>
-                        </div>
-                    </div>
-                </div>
+                }
+
             </div>
         </div>
     </div>

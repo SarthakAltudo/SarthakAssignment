@@ -1,8 +1,22 @@
 ﻿@using Sitecore.Mvc
+
 @using Sitecore.Mvc.Presentation
+
 @using Sitecore.Mvc.Helpers
+
+@using Sitecore.Data
+
+@using Sitecore.Data.Items
+
+@using Sitecore.Data.Fields
+
+
 @{
+
     Layout = null;
+
+    Item Itemdata = (Item)Model;
+
 }
 
 <header>
@@ -57,7 +71,10 @@
                     <div class="col-xl-3 col-lg-3 col-6">
                         <div class="header__logo">
                             <a href="/">
-                                <img src="assets/img/Logo.png" alt="logo" />
+
+                                @*<img src="assets/img/Logo.png" alt="logo" />*@
+
+                                @Html.Sitecore().Field("Logo", Itemdata)
                             </a>
                         </div>
                     </div>
@@ -65,30 +82,62 @@
                         <div class="header__widget-wrapper">
                             <div class="header__widget-info">
                                 <div class="header__widget-icon">
-                                    <img src="assets/img/Call.png"
-                                         alt="icon not found" />
+
+                                    @*<img src="assets/img/Call.png"
+
+                                        alt="icon not found" />*@
+
+                                    @Html.Sitecore().Field("CallLogo", Itemdata)
                                 </div>
                                 <div class="header__widget-content">
-                                    <span>Call Us Now</span>
-                                    <h4><a href="tel:00211232000">00 211 232 000</a></h4>
+
+                                    @Html.Sitecore().Field("CallText", Itemdata)
+                                    <h4>
+                                        <a href="tel:00211232000">
+
+                                            @*00 211 232 000*@
+
+                                            @Html.Sitecore().Field("CallNum", Itemdata)
+                                        </a>
+                                    </h4>
                                 </div>
                             </div>
                             <div class="header__widget-info">
                                 <div class="header__widget-icon">
-                                    <img src="assets/img/email.png"
-                                         alt="icon not found" />
+
+                                    @*<img src="assets/img/email.png"
+
+                                        alt="icon not found" />*@
+
+                                    @Html.Sitecore().Field("EmailLogo", Itemdata)
                                 </div>
                                 <div class="header__widget-content">
-                                    <span>Email Address</span>
+                                    <span>
+
+                                        @*Email Address*@
+
+                                        @Html.Sitecore().Field("EmailText", Itemdata)
+                                    </span>
                                     <h4>
-                                        <a href="mailto:info@webmail.com">info@webmail.com</a>
+
+
+                                        <a href="mailto:info@webmail.com">
+
+                                            @*info@webmail.com*@
+
+                                            @Html.Sitecore().Field("EmailAdd", Itemdata)
+                                        </a>
                                     </h4>
                                 </div>
                             </div>
                             <div class="header__right">
                                 <div class="header__button d-none d-lg-block">
-                                    <a class="header__btn-1" href="/contact">
-                                        Get Appointment<span><i class="fa-solid fa-angle-right"></i></span>
+                                    <a class="header__btn-1" href="https://eurtech-react.vercel.app/contact">
+
+                                        @*Get Appointment*@
+
+                                        @Html.Sitecore().Field("ctaText", Itemdata)
+                                        <span><i class="fa-solid fa-angle-right"></i></span>
                                     </a>
                                 </div>
                                 <div class="header__widget-toggle d-lg-none">
@@ -115,11 +164,15 @@
                                                     <li><a href="/home-3">Home Style 03</a></li>
                                                 </ul>
                                             </li>
-                                            <li class="undefined"><a href="/about">About</a></li>
+                                            <li class="undefined">
+                                                <a href="/about">About</a>
+                                            </li>
                                             <li class="active has-dropdown">
                                                 <a href="/service">Services</a>
                                                 <ul class="submenu">
-                                                    <li><a href="/service">Services</a></li>
+                                                    <li>
+                                                        <a href="/service">Services</a>
+                                                    </li>
                                                     <li>
                                                         <a href="/service-details">Service Details</a>
                                                     </li>
@@ -127,6 +180,7 @@
                                             </li>
                                             <li class="active has-dropdown">
                                                 <a href="/blog">Blog</a>
+
                                                 <ul class="submenu">
                                                     <li><a href="/blog">Blog</a></li>
                                                     <li><a href="/blog-details">Blog Details</a></li>
@@ -152,6 +206,7 @@
                                 </div>
                                 <div class="header__button d-none d-xl-block">
                                     <a class="header__btn-1" href="/contact">
+
                                         Get Appointment<span><i class="fa-solid fa-angle-right"></i></span>
                                     </a>
                                 </div>
@@ -169,6 +224,7 @@
             </div>
         </div>
     </div>
+
     <div class="header__area header__transparent">
         <div class="container">
             <div class="header__main-wrapper d-none d-lg-block">
@@ -186,16 +242,25 @@
                                 <nav id="mobile-menu-2">
                                     <ul>
                                         <li class="active has-dropdown">
-                                            <a href="/">Home</a>
+
+                                            @*<a href="/">Home</a>*@
+                                            <a>@Html.Sitecore().Field("Home", Itemdata)</a>
                                             <ul class="submenu">
                                                 <li><a href="/">Home Style 01</a></li>
                                                 <li><a href="/home-2">Home Style 02</a></li>
                                                 <li><a href="/home-3">Home Style 03</a></li>
                                             </ul>
                                         </li>
-                                        <li class="undefined"><a href="/about">About</a></li>
+                                        <li class="undefined">
+
+                                            @*<a href="/about">About</a>*@
+                                            <a>@Html.Sitecore().Field("About", Itemdata)</a>
+
+                                        </li>
                                         <li class="active has-dropdown">
-                                            <a href="/service">Services</a>
+
+                                            @*<a href="/service">Services</a>*@
+                                            <a>@Html.Sitecore().Field("Services", Itemdata)</a>
                                             <ul class="submenu">
                                                 <li><a href="/service">Services</a></li>
                                                 <li>
@@ -204,14 +269,18 @@
                                             </ul>
                                         </li>
                                         <li class="active has-dropdown">
-                                            <a href="/blog">Blog</a>
+
+                                            @*<a href="/blog">Blog</a>*@
+                                            <a>@Html.Sitecore().Field("Blog", Itemdata)</a>
                                             <ul class="submenu">
                                                 <li><a href="/blog">Blog</a></li>
                                                 <li><a href="/blog-details">Blog Details</a></li>
                                             </ul>
                                         </li>
                                         <li class="active has-dropdown">
-                                            <a href="/team">Pages</a>
+
+                                            @*<a href="/team">Pages</a>*@
+                                            <a>@Html.Sitecore().Field("Pages", Itemdata)</a>
                                             <ul class="submenu">
                                                 <li><a href="/team">Team</a></li>
                                                 <li><a href="/team-details">Team Details</a></li>
@@ -223,7 +292,9 @@
                                             </ul>
                                         </li>
                                         <li class="undefined">
-                                            <a href="/contact">Contact</a>
+
+                                            @*<a href="/contact">Contact</a>*@
+                                            <a>@Html.Sitecore().Field("Contact", Itemdata)</a>
                                         </li>
                                     </ul>
                                 </nav>
@@ -251,119 +322,4 @@
             </div>
         </div>
     </div>
-</header>
-
-<div class="fix">
-    <div class="offcanvas__info">
-        <div class="offcanvas__wrapper">
-            <div class="offcanvas__content">
-                <div class="offcanvas__top mb-40 d-flex justify-content-between align-items-center">
-                    <div class="offcanvas__logo logo">
-                        <a href="/">
-                            <img src="/assets/img/logo/logo-2.png" alt="logo not found" />
-                        </a>
-                    </div>
-                    <div class="offcanvas__close">
-                        <button><i class="fal fa-times"></i></button>
-                    </div>
-                </div>
-                <div class="offcanvas__search mb-25">
-                    <form action="#">
-                        <input type="text"
-                               placeholder="What are you searching for?" /><button type="submit"><i class="far fa-search"></i></button>
-                    </form>
-                </div>
-                <nav class="side-mobile-menu d-block d-lg-none mm-menu">
-                    <ul>
-                        <li class="menu-item-has-children has-droupdown">
-                            <a>Home</a>
-                            <ul class="sub-menu">
-                                <li><a href="/">Home Style 1</a></li>
-                                <li><a href="/home-2">Home Style 2</a></li>
-                                <li><a href="/home-3">Home Style 3</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="/about">About</a></li>
-                        <li class="menu-item-has-children has-droupdown">
-                            <a>Services</a>
-                            <ul class="sub-menu">
-                                <li><a href="/service">Services</a></li>
-                                <li><a href="/service-details">Service Details</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children has-droupdown">
-                            <a>Blog</a>
-                            <ul class="sub-menu">
-                                <li><a href="/blog">Blog</a></li>
-                                <li><a href="/blog-details">Blog Details</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children has-droupdown">
-                            <a>Pages</a>
-                            <ul class="sub-menu">
-                                <li><a href="/team">Team</a></li>
-                                <li><a href="/team-details">Team Details</a></li>
-                                <li><a href="/case-study">Case Study</a></li>
-                                <li><a href="/case-details">Case Details</a></li>
-                                <li><a href="/pricing">Pricing</a></li>
-                                <li><a href="/faq">FAQ</a></li>
-                                <li><a href="/error">404 Page</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="/contact">Contact</a></li>
-                    </ul>
-                </nav>
-                <div class="offcanvas__contact mt-30 mb-20">
-                    <h4>Contact Info</h4>
-                    <ul>
-                        <li class="d-flex align-items-center">
-                            <div class="offcanvas__contact-icon mr-15">
-                                <i class="fal fa-map-marker-alt"></i>
-                            </div>
-                            <div class="offcanvas__contact-text">
-                                <a target="_blank"
-                                   href="">12/A, Mirnada City Tower, NYC</a>
-                            </div>
-                        </li>
-                        <li class="d-flex align-items-center">
-                            <div class="offcanvas__contact-icon mr-15">
-                                <i class="far fa-phone"></i>
-                            </div>
-                            <div class="offcanvas__contact-text">
-                                <a href="tel:+088889797697">+088889797697</a>
-                            </div>
-                        </li>
-                        <li class="d-flex align-items-center">
-                            <div class="offcanvas__contact-icon mr-15">
-                                <i class="fal fa-envelope"></i>
-                            </div>
-                            <div class="offcanvas__contact-text">
-                                <a href="tel:+012-345-6789">
-                                    <span class="mailto:support@mail.com">support@mail.com</span>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="offcanvas__social">
-                    <ul>
-                        <li>
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="offcanvas-overlay"></div>
+    </he

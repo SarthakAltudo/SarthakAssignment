@@ -4,7 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Sitecore.Mvc;
-
+using Sitecore.Mvc.Presentation;
+using Sitecore.Mvc.Helpers;
+using Sitecore.Data;
 namespace Sarthak.Controllers
 {
     public class AssessmentController : Sitecore.Mvc.Controllers.SitecoreController
@@ -13,11 +15,13 @@ namespace Sarthak.Controllers
         // GET: Assessment
         public ActionResult Header()
         {
-            return View();
+            var data = RenderingContext.Current.Rendering.Item;
+            return View(data);
         }
         public ActionResult Footer()
         {
-            return View();
+            var data= RenderingContext.Current.Rendering.Item;  
+            return View(data);
         }
     }
 }
